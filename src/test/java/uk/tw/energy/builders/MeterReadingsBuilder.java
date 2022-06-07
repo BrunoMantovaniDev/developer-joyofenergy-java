@@ -11,6 +11,9 @@ public class MeterReadingsBuilder {
 
     private static final String DEFAULT_METER_ID = "id";
 
+    MeterReadings meterReadings;
+    MeterReadings meterReadingsTwo;
+
     private String smartMeterId = DEFAULT_METER_ID;
     private List<ElectricityReading> electricityReadings = new ArrayList<>();
 
@@ -31,5 +34,16 @@ public class MeterReadingsBuilder {
 
     public MeterReadings build() {
         return new MeterReadings(smartMeterId, electricityReadings);
+    }
+
+    public void builde() {
+        generateElectricityReadings();
+        meterReadings = new MeterReadings(smartMeterId, electricityReadings);
+    }
+
+    public void builde(String sm, int n) {
+        setSmartMeterId(sm);
+        generateElectricityReadings(n);
+        meterReadingsTwo = new MeterReadings(smartMeterId, electricityReadings);
     }
 }
